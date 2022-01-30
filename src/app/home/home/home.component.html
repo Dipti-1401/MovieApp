@@ -1,0 +1,39 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#fff" type = "ball-pulse-rise" [fullScreen] = "true"><p style="color: #fff; font-size: 30px;" > Loading... </p></ngx-spinner>
+
+<div class="container">
+
+    <div class="row pt-5">
+      <h1>All Movies</h1>
+      <div class="col-md-4 p-2" *ngFor="let post of latest; let i = index">
+       <!-- single post card -->
+        <div class="card shadow" *ngIf="i+1 === latest.length" #theLastList>
+         <div class="card-body">
+          <h5 class="card-title text-center "><img
+            class="poster-img hoverable"
+            src="https://image.tmdb.org/t/p/w400/{{ post.poster_path }}"
+            title="{{ post.title }}"
+            alt="{{ post.title }}"
+          /></h5>
+          <span ><strong>Title : {{post.title}}</strong></span>  
+             <p class="card-text">Vote Average : {{post.vote_average}}</p>
+          </div>
+        </div>
+
+        <div class="card shadow" *ngIf="i+1 != latest.length">
+            <div class="card-body">
+             <h5 class="card-title text-center "><img
+                class="poster-img hoverable"
+                src="https://image.tmdb.org/t/p/w400/{{ post.poster_path }}"
+                title="{{ post.title }}"
+                alt="{{ post.title }}"
+              /></h5>
+             
+              <span ><strong>{{post.title}}</strong></span>  
+              <p class="card-text"><strong>Vote Average :</strong> {{post.vote_average}}</p>
+             </div>
+           </div>
+       </div>
+
+    </div> 
+</div>
+

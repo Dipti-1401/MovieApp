@@ -1,0 +1,88 @@
+<ngx-spinner bdColor = "rgba(0,0,0,0.8)" size = "large" color = "#fff" type = "ball-pulse-sync" [fullScreen] = "true"><p style="color: #fff; font-size: 30px;" > Loading... </p></ngx-spinner>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-10">
+                   <h1>Popular Movies</h1>
+                </div> 
+                <div class="col-2">
+                    <span *ngIf="!list">
+                        <i class="fa fa-refresh fa-spin" (click)="refresh()" style="font-size:24px"></i>
+                    </span>
+                    <span *ngIf="list">
+                        <i class="fa fa-refresh" (click)="refresh()" style="font-size:24px"></i>
+                    </span>
+                 </div> 
+                 
+            </div>
+            <span *ngIf="!list">
+              <div class="d-flex" style="border-bottom: 1px solid #e2e2e2;" *ngFor="let a of latest;">
+                <div><ngx-shimmer-loading [direction]="'rtl'" [shape]="'square'" [width]="'70px'" [height]="'20px'"></ngx-shimmer-loading></div> &nbsp; &nbsp;
+                <div><ngx-shimmer-loading [direction]="'rtl'" [shape]="'rect'" [width]="'150px'" [height]="'10px'"></ngx-shimmer-loading><br>
+                </div><hr>
+              </div>
+               
+              </span>
+            <div *ngIf="list">
+                <table class="table table-sm">
+                    <tbody *ngFor="let a of latest; let i = index">
+                      <tr *ngIf="i + 1 === latest.length" #theLastList>
+                        <td> <img src="https://image.tmdb.org/t/p/w400/{{ a.poster_path }}" /></td>
+                        <td><strong>Title : </strong> {{a.title}}</td>
+
+                      </tr>
+                      <tr *ngIf="i + 1 != latest.length" >
+                        <td> <img src="https://image.tmdb.org/t/p/w400/{{ a.poster_path }}" /></td>
+                        <td><strong>Title : </strong> {{a.title}}</td>
+                        
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <!-- Upcoming Movies -->
+        <div class="col-6">
+            <div class="row">
+                <div class="col-10">
+                   <h1>Upcoming Movies</h1>
+                </div> 
+                <div class="col-2">
+                    <span *ngIf="!list1">
+                        <i class="fa fa-refresh fa-spin" (click)="refreshUp()" style="font-size:24px"></i>
+                    </span>
+                    <span *ngIf="list1">
+                        <i class="fa fa-refresh" (click)="refreshUp()" style="font-size:24px"></i>
+                    </span>
+                 </div> 
+                 
+            </div>
+            <span *ngIf="!list1">
+              <div class="d-flex" style="border-bottom: 1px solid #e2e2e2;" *ngFor="let a of latest;">
+                <div><ngx-shimmer-loading [direction]="'rtl'" [shape]="'square'" [width]="'70px'" [height]="'20px'"></ngx-shimmer-loading></div> &nbsp; &nbsp;
+                <div><ngx-shimmer-loading [direction]="'rtl'" [shape]="'rect'" [width]="'150px'" [height]="'10px'"></ngx-shimmer-loading><br>
+                </div><hr>
+              </div>            </span>
+            <div *ngIf="list1">
+                <table class="table table-sm">
+                    <tbody *ngFor="let a of latest1; let i = index">
+                      <tr *ngIf="i + 1 === latest1.length" #theLastList>
+                        <td> <img src="https://image.tmdb.org/t/p/w400/{{ a.poster_path }}" /></td>
+                        <td><strong>Title : </strong> {{a.title}}</td>
+
+                      </tr>
+                      <tr *ngIf="i + 1 != latest1.length" >
+                        <td> <img src="https://image.tmdb.org/t/p/w400/{{ a.poster_path }}" /></td>
+                        <td><strong>Title : </strong> {{a.title}}</td>
+                        
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>
